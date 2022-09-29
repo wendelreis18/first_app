@@ -25,7 +25,7 @@ class _PrimeiroAppState extends State<PrimeiroApp> {
       appBar: AppBar(
         title: Text("Meu App Novo"),
         centerTitle: true,
-        backgroundColor: Colors.orange,
+        backgroundColor: Colors.red,
       ),
       body: Padding(
           padding: const EdgeInsets.all(30.0),
@@ -49,7 +49,10 @@ class _PrimeiroAppState extends State<PrimeiroApp> {
                   padding: const EdgeInsets.all(15.0),
                   width: 110,
                   height: 60,
-                  child: ElevatedButton(onPressed: () {}, child: Text("Logar")))
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: Text("Logar"),
+                  ))
             ],
           )),
     );
@@ -71,40 +74,56 @@ class _PaginaVendasState extends State<PaginaVendas> {
     Jogos("Fifa", 250.0, "lib/imagens/Fifa22-Capa.png"),
     Jogos("Fortnite", 0.0, "lib/imagens/Fortnite-Capa.jpg"),
     Jogos("Call Of Dute", 170.0, "lib/imagens/Call-of-Duty-Capa.jpg"),
-    Jogos("Red Dead Redemption", 300.0, "lib/imagens/Gta5-Capa.png"),
-    Jogos("Spider-Man", 300.0, "lib/imagens/Spider-Man_capa.png")
+    Jogos("Red Dead Redemption", 300.0, "lib/imagens/Fifa22-Capa.png"),
+    Jogos("Spider-Man", 300.0, "lib/imagens/Spider-Man_capa.png"),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          leading: Builder(
-            builder: (BuildContext context) {
-              return IconButton(
-                icon: const Icon(Icons.menu),
-                onPressed: () {},
-                tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
-              );
-            },
-          ),
-          title: Text("Melhores Jogos"),
-          centerTitle: true,
-        ),
-        body: ListView.builder(
-          itemCount: jogos.length,
-          itemBuilder: (context, index) {
-            return Card(
-              child: ListTile(
-                leading: Image.asset(jogos[index].imagem),
-                title: Text(jogos[index].nome),
-                subtitle: Text("R\$" + jogos[index].preco.toStringAsFixed(2)),
-                trailing:
-                    ElevatedButton(onPressed: () {}, child: Text("Comprar")),
-              ),
+      appBar: AppBar(
+        backgroundColor: Colors.red,
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: const Icon(Icons.menu),
+              onPressed: () {},
+              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
             );
           },
-        ));
+        ),
+        title: Text("Melhores Jogos"),
+        centerTitle: true,
+      ),
+      body: ListView.builder(
+        itemCount: jogos.length,
+        itemBuilder: (context, index) {
+          return Card(
+            child: ListTile(
+              leading: Image.asset(jogos[index].imagem),
+              title: Text(jogos[index].nome),
+              subtitle: Text("R\$" + jogos[index].preco.toStringAsFixed(2)),
+              trailing:
+                  ElevatedButton(onPressed: () {}, child: Text("Comprar")),
+            ),
+          );
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(Icons.shopping_bag),
+      ),
+      bottomSheet: SizedBox(
+          height: 50.0,
+          child: Container(
+            color: Colors.red,
+            child: Row(
+              children: [
+                Text("Valor de Compra"),
+              ],
+            ),
+          )),
+    );
   }
 }
 
